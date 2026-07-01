@@ -1,0 +1,63 @@
+---
+const experiences = [
+  {
+    title: "Caminar por la Ciudad Eterna.",
+    image: "/images/rome.jpg",
+    reverse: false
+  },
+  {
+    title: "Cruzar el Ponte Vecchio en Florencia.",
+    image: "/images/florence.jpg",
+    reverse: true
+  },
+  {
+    title: "Navegar en la mística Venecia.",
+    image: "/images/venice.jpg",
+    reverse: false
+  },
+  {
+    title: "Contemplar el Big Ben y la Torre Eiffel.",
+    image: "/images/london_paris.jpg",
+    reverse: true
+  },
+  {
+    title: "Vivir la magia pura en Disneyland París.",
+    image: "/images/disney.jpg",
+    reverse: false
+  }
+];
+---
+<section class="py-20 bg-white overflow-hidden">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl md:text-5xl font-bold text-center mb-16 uppercase tracking-tight max-w-4xl mx-auto">
+      NO SE TRATA SOLO DE CONOCER EUROPA Y DISNEYLAND PARÍS, SE TRATA DE:
+    </h2>
+
+    <div class="space-y-20 md:space-y-0">
+      {experiences.map((exp, index) => (
+        <div class={`flex flex-col md:flex-row items-center gap-10 md:gap-20 ${exp.reverse ? 'md:flex-row-reverse' : ''} mb-20 last:mb-0`}>
+          <!-- Text Content -->
+          <div class="flex-1 text-center md:text-left">
+            <h3 class="text-3xl md:text-5xl font-bold text-gray-900 leading-tight">
+              {exp.title}
+            </h3>
+          </div>
+
+          <!-- Image Container -->
+          <div class="flex-1 w-full relative group">
+            <div class="relative h-[300px] md:h-[450px] overflow-hidden rounded-2xl shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
+              <img 
+                src={exp.image} 
+                alt={exp.title} 
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+            <!-- Decorative element -->
+            <div class={`absolute -z-10 top-10 ${exp.reverse ? '-right-10' : '-left-10'} w-full h-full bg-amber-400/20 rounded-2xl`}></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

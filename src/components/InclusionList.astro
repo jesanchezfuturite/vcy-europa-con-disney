@@ -1,0 +1,63 @@
+---
+const includes = [
+  "Vuelos internacionales CDMX – Roma y París – CDMX.",
+  "13 noches de alojamiento en hoteles seleccionados.",
+  "Desayunos diarios incluidos en los hoteles.",
+  "Entrada y traslado incluidos a Disneyland París.",
+  "Autocar de lujo climatizado para todo el circuito terrestre.",
+  "Cruce en Ferry internacional entre Bélgica, Londres y París.",
+  "Guías acompañantes de habla hispana durante la ruta.",
+  "Traslados aeropuerto – hotel – aeropuerto incluidos.",
+  "Seguro de viajero internacional con cobertura médica.",
+  "Equipaje completo: 1 maleta de 23 kg + carry on + artículo personal."
+];
+
+const notIncludes = [
+  "Almuerzos y cenas durante todo el recorrido.",
+  "Excursiones o visitas catalogadas como opcionales.",
+  "Gastos personales (lavandería, llamadas, internet).",
+  "Propinas en destino para guías y choferes.",
+  "Cualquier servicio no especificado en el itinerario."
+];
+---
+<section class="py-20 bg-gray-50">
+  <div class="container mx-auto px-4 max-w-6xl">
+    <h2 class="text-3xl md:text-5xl font-bold text-center mb-16 uppercase">LO QUE INCLUYE TU VIAJE</h2>
+
+    <div class="grid md:grid-cols-2 gap-12">
+      <!-- ✅ Incluye -->
+      <div class="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-gray-100">
+        <h3 class="text-2xl font-bold text-green-600 mb-8 flex items-center gap-3">
+          <span class="text-3xl">✅</span> Incluye
+        </h3>
+        <ul class="space-y-4">
+          {includes.map(item => (
+            <li class="flex items-start gap-3 text-gray-700">
+              <svg class="w-5 h-5 text-green-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span class="font-medium">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- ❌ No incluye -->
+      <div class="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-gray-100">
+        <h3 class="text-2xl font-bold text-red-600 mb-8 flex items-center gap-3">
+          <span class="text-3xl">❌</span> No incluye
+        </h3>
+        <ul class="space-y-4">
+          {notIncludes.map(item => (
+            <li class="flex items-start gap-3 text-gray-700">
+              <svg class="w-5 h-5 text-red-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+              <span class="font-medium">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

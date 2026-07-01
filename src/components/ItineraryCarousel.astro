@@ -1,0 +1,91 @@
+---
+const itinerary = [
+  {
+    title: "La Italia Clásica",
+    desc: "Un viaje en el tiempo desde el imponente Coliseo Romano hasta un city tour panorámico por los misticos canales venecianos.",
+    num: "01"
+  },
+  {
+    title: "El Corazón de Alemania",
+    desc: "Paisajes alpinos de cuento en Innsbruck y una parada en las plazas medievales alemanas que fascinarán a grandes y chicos.",
+    num: "02"
+  },
+  {
+    title: "Joyas de Bélgica",
+    desc: "Caminata por las calles empedradas de Brujas, una ciudad medieval que parece de chocolate, y parada en la emblemática Grand Place de Bruselas.",
+    num: "03"
+  },
+  {
+    title: "La Metrópolis Inglesa",
+    desc: "Cruzar en un enorme ferry internacional hacia Inglaterra para conocer de cerca el Big Ben y la cultura del Reino Unido.",
+    num: "04"
+  },
+  {
+    title: "El Final Mágico",
+    desc: "Tres noches en París combinando la elegancia de la Torre Eiffel con el día más esperado por los niños en el parque Disney.",
+    num: "05"
+  }
+];
+---
+<section class="py-20 bg-gray-50 overflow-hidden">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl md:text-5xl font-bold text-center mb-16 uppercase tracking-tight">TU ITINERARIO EN UNA SOLA MIRADA</h2>
+    
+    <div class="relative group">
+      <!-- Carousel Container -->
+      <div id="itinerary-scroll" class="flex gap-6 overflow-x-auto pb-12 snap-x snap-mandatory scrollbar-hide no-scrollbar">
+        {itinerary.map(item => (
+          <div class="min-w-[300px] md:min-w-[400px] bg-white p-8 md:p-12 rounded-[2.5rem] shadow-sm border border-gray-100 snap-center relative overflow-hidden">
+            <span class="absolute top-0 right-0 text-8xl font-black text-gray-50 -translate-y-4 translate-x-4">
+              {item.num}
+            </span>
+            <div class="relative z-10">
+              <div class="w-12 h-1 bg-amber-400 mb-8"></div>
+              <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+                {item.title}
+              </h3>
+              <p class="text-gray-600 text-lg leading-relaxed">
+                {item.desc}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Navigation Buttons -->
+      <div class="flex justify-center gap-4 mt-8">
+        <button id="prev-it" class="bg-white border border-gray-200 p-4 rounded-full shadow-lg hover:bg-amber-400 transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        </button>
+        <button id="next-it" class="bg-white border border-gray-200 p-4 rounded-full shadow-lg hover:bg-amber-400 transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
+
+<script>
+  const scroll = document.getElementById('itinerary-scroll');
+  const prev = document.getElementById('prev-it');
+  const next = document.getElementById('next-it');
+
+  if (scroll && prev && next) {
+    prev.addEventListener('click', () => {
+      scroll.scrollBy({ left: -350, behavior: 'smooth' });
+    });
+    next.addEventListener('click', () => {
+      scroll.scrollBy({ left: 350, behavior: 'smooth' });
+    });
+  }
+</script>

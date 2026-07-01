@@ -1,0 +1,62 @@
+---
+const faqs = [
+  {
+    q: "¿Se necesita visa para este viaje?",
+    a: "Para ciudadanos mexicanos, no se requiere visa para entrar a la Unión Europea o al Reino Unido por turismo (sujeto a cambios en políticas migratorias como el ETIAS)."
+  },
+  {
+    q: "¿Cómo funcionan los pagos y el apartado?",
+    a: "Puedes apartar tu lugar con solo $5,500 MXN. El resto se liquida en pagos mensuales flexibles, debiendo estar cubierto el 100% 60 días antes de la salida."
+  },
+  {
+    q: "¿Qué pasa con el equipaje en los traslados en autobús?",
+    a: "Tu paquete incluye el manejo de una maleta de hasta 23kg que va en la cajuela del autobús, además de tu equipaje de mano que te acompaña en el asiento."
+  },
+  {
+    q: "¿La entrada a Disneyland París ya viene incluida?",
+    a: "¡Sí! El paquete incluye la entrada a un parque y el traslado redondo desde el hotel en París, para que no tengas que preocuparte por nada."
+  },
+  {
+    q: "¿Es un viaje muy cansado para niños?",
+    a: "El itinerario está diseñado para familias, con autobuses de gran confort y tiempos de descanso adecuados. Recomendamos que los niños sean mayores de 5 años para disfrutarlo al máximo."
+  },
+  {
+    q: "¿Cómo funcionan las habitaciones si viajo con mis hijos?",
+    a: "Contamos con habitaciones dobles y triples. Si viajan 4 personas, generalmente se asignan dos habitaciones dobles contiguas o conectadas según disponibilidad del hotel."
+  },
+  {
+    q: "¿Los niños pagan lo mismo que un adulto?",
+    a: "Existe un descuento especial para menores de 12 años compartiendo habitación con dos adultos. Consulta los detalles exactos al momento de tu cotización."
+  },
+  {
+    q: "¿La entrada a Eurodisney incluye los dos parques o traslados?",
+    a: "Incluye la entrada a un parque (Disneyland Park o Walt Disney Studios) y el traslado de ida y vuelta desde nuestro hotel seleccionado."
+  }
+];
+---
+<section class="py-20 bg-white">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <h2 class="text-3xl md:text-5xl font-bold text-center mb-16 uppercase tracking-tight">PREGUNTAS FRECUENTES</h2>
+    <div class="space-y-4">
+      {faqs.map(faq => (
+        <details class="group bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden transition-all duration-300">
+          <summary class="flex items-center justify-between p-6 md:p-8 cursor-pointer list-none list-inside">
+            <h3 class="text-lg md:text-xl font-bold text-gray-900 pr-8">{faq.q}</h3>
+            <span class="transition-transform duration-300 group-open:rotate-180">
+              <svg class="w-6 h-6 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </span>
+          </summary>
+          <div class="px-6 md:px-8 pb-6 md:pb-8 text-gray-600 leading-relaxed text-lg">
+            {faq.a}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+</style>
