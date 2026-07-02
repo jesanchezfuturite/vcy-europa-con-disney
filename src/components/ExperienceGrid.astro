@@ -33,9 +33,9 @@ const experiences = [
       NO SE TRATA SOLO DE CONOCER EUROPA Y DISNEYLAND PARÍS, SE TRATA DE:
     </h2>
 
-    <div class="space-y-20 md:space-y-0">
-      {experiences.map((exp, index) => (
-        <div class={`flex flex-col md:flex-row items-center gap-10 md:gap-20 ${exp.reverse ? 'md:flex-row-reverse' : ''} mb-20 last:mb-0`}>
+    <div class="space-y-24 md:space-y-32">
+      {experiences.map((exp) => (
+        <div class={`flex flex-col md:flex-row items-center gap-10 md:gap-20 ${exp.reverse ? 'md:flex-row-reverse' : ''}`}>
           <!-- Text Content -->
           <div class="flex-1 text-center md:text-left">
             <h3 class="text-3xl md:text-5xl font-bold text-gray-900 leading-tight">
@@ -45,7 +45,7 @@ const experiences = [
 
           <!-- Image Container -->
           <div class="flex-1 w-full relative group">
-            <div class="relative h-[300px] md:h-[450px] overflow-hidden rounded-2xl shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
+            <div class="relative h-[250px] md:h-[450px] overflow-hidden rounded-2xl shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
               <img 
                 src={exp.image} 
                 alt={exp.title} 

@@ -40,7 +40,7 @@ const itinerary = [
       <!-- Carousel Container -->
       <div id="itinerary-scroll" class="flex gap-6 overflow-x-auto pb-12 snap-x snap-mandatory scrollbar-hide no-scrollbar">
         {itinerary.map(item => (
-          <div class="min-w-[300px] md:min-w-[400px] bg-white rounded-[2.5rem] shadow-sm border border-gray-100 snap-center relative overflow-hidden group/card">
+          <div class="min-w-[280px] md:min-w-[400px] bg-white rounded-[2.5rem] shadow-sm border border-gray-100 snap-center relative overflow-hidden group/card">
             {item.image && (
               <div class="h-48 overflow-hidden">
                 <img src={item.image} alt={item.title} class="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-110" />
