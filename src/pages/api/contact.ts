@@ -24,7 +24,8 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    const response = await fetch('https://api.brevo.com/v3/contacts', {
+    // 1. Create/Update Contact in Brevo
+    const contactResponse = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
       headers: {
         'accept': 'application/json',
@@ -38,20 +39,51 @@ export const POST: APIRoute = async ({ request }) => {
           TELEFONO: phone,
           ORIGEN: 'Landing Europa con Disney 2026'
         },
-        listIds: [1], // Update with actual list ID if needed
+        listIds: [1],
         updateEnabled: true
       })
     });
 
-    if (response.ok) {
+    // 2. Send Transactional Email Notification
+    const emailResponse = await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: {
+        'accept': 'application/json',
+        'content-type': 'application/json',
+        'api-key': BREVO_API_KEY
+      },
+      body: JSON.stringify({
+        sender: { name: "Landing Europa con Disney", email: "noreply@futurite.info" },
+        to: [
+          { email: "ventas@viajacomoyo.net", name: "Ventas Viaja Como Yo" },
+          { email: "dev@futurite.com", name: "Dev Futurite" }
+        ],
+        subject: `Nuevo Lead: Europa con Disney 2026 - ${name}`,
+        htmlContent: `
+          <html>
+            <body>
+              <h1>Nuevo Prerregistro de Viaje</h1>
+              <p>Se ha recibido un nuevo lead desde la landing page <strong>Europa con Disney 2026</strong>.</p>
+              <hr />
+              <p><strong>Nombre:</strong> ${name}</p>
+              <p><strong>Teléfono:</strong> ${phone}</p>
+              <p><strong>Email:</strong> ${email}</p>
+              <hr />
+              <p>Este es un correo automático generado por el sistema.</p>
+            </body>
+          </html>
+        `
+      })
+    });
+
+    if (contactResponse.ok || emailResponse.ok) {
       return new Response(
-        JSON.stringify({ message: '¡Gracias! Tu lugar ha sido pre-registrado.' }),
+        JSON.stringify({ message: '¡Gracias! Tu lugar ha sido pre-registrado y el equipo ha sido notificado.' }),
         { status: 200 }
       );
     } else {
-      const errorData = await response.json();
       return new Response(
-        JSON.stringify({ message: 'Error en el servidor de correos.', details: errorData }),
+        JSON.stringify({ message: 'Error en la integración con Brevo.' }),
         { status: 500 }
       );
     }

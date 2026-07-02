@@ -2,15 +2,18 @@
 const moments = [
   {
     title: "Su primera góndola en los canales de Venecia",
-    desc: "Navegar juntos por una de las ciudades más mágicas del mundo, sorprendiendo a los niños con un paisaje sacado de un cuento."
+    desc: "Navegar juntos por una de las ciudades más mágicas del mundo, sorprendiendo a los niños con un paisaje sacado de un cuento.",
+    image: "/images/venecia.webp"
   },
   {
     title: "Postales frente al Big Ben y la Torre Eiffel",
-    desc: "Caminar por las avenidas más icónicas de Londres y París, tomándose la foto familiar que se quedará en la sala de la casa para siempre."
+    desc: "Caminar por las avenidas más icónicas de Londres y París, tomándose la foto familiar que se quedará en la sala de la casa para siempre.",
+    image: "/images/bigben.webp"
   },
   {
     title: "La noche mágica en Disneyland París",
-    desc: "Vivir juntos el espectacular desfile nocturno Disney Stars on Parade y ver los ojos de tus hijos brillar con la música, los personajes y el show final."
+    desc: "Vivir juntos el espectacular desfile nocturno Disney Stars on Parade y ver los ojos de tus hijos brillar con la música, los personajes y el show final.",
+    image: "/images/disney.jpg"
   }
 ];
 ---
@@ -19,19 +22,18 @@ const moments = [
     <h2 class="text-3xl md:text-5xl font-bold text-center mb-16 uppercase tracking-tight">LOS MOMENTOS QUE RECORDARÁS PARA SIEMPRE</h2>
     <div class="grid md:grid-cols-3 gap-8">
       {moments.map(moment => (
-        <div class="bg-gray-50 p-10 rounded-[2.5rem] border border-gray-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 group">
-          <div class="w-16 h-16 bg-amber-400 rounded-2xl flex items-center justify-center mb-8 transform transition-transform group-hover:rotate-12">
-            <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
-            </svg>
+        <div class="bg-gray-50 rounded-[2.5rem] border border-gray-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 group overflow-hidden">
+          <div class="h-64 overflow-hidden">
+            <img src={moment.image} alt={moment.title} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
           </div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-4 leading-snug">
-            {moment.title}
-          </h3>
-          <p class="text-gray-600 leading-relaxed">
-            {moment.desc}
-          </p>
+          <div class="p-10">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4 leading-snug">
+              {moment.title}
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+              {moment.desc}
+            </p>
+          </div>
         </div>
       ))}
     </div>

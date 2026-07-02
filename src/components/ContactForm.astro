@@ -85,10 +85,15 @@
           msg!.textContent = result.message;
           msg!.className = 'mt-4 text-center font-bold text-green-600 block';
           form.reset();
-          // Simulate PDF download
-          setTimeout(() => {
-            alert('¡Gracias! El itinerario PDF se ha generado correctamente. (Simulación de descarga)');
-          }, 500);
+          
+          // Trigger PDF Download
+          const link = document.createElement('a');
+          link.href = '/pdf/europa-con-disney.pdf';
+          link.download = 'Itinerario_Europa_Disney_2026.pdf';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          
         } else {
           msg!.textContent = result.message || 'Error al enviar.';
           msg!.className = 'mt-4 text-center font-bold text-red-600 block';

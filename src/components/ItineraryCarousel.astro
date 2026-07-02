@@ -3,27 +3,32 @@ const itinerary = [
   {
     title: "La Italia Clásica",
     desc: "Un viaje en el tiempo desde el imponente Coliseo Romano hasta un city tour panorámico por los misticos canales venecianos.",
-    num: "01"
+    num: "01",
+    image: "/images/pisa.webp"
   },
   {
     title: "El Corazón de Alemania",
     desc: "Paisajes alpinos de cuento en Innsbruck y una parada en las plazas medievales alemanas que fascinarán a grandes y chicos.",
-    num: "02"
+    num: "02",
+    image: "/images/innsbruck.webp"
   },
   {
     title: "Joyas de Bélgica",
     desc: "Caminata por las calles empedradas de Brujas, una ciudad medieval que parece de chocolate, y parada en la emblemática Grand Place de Bruselas.",
-    num: "03"
+    num: "03",
+    image: "/images/brujas.webp"
   },
   {
     title: "La Metrópolis Inglesa",
     desc: "Cruzar en un enorme ferry internacional hacia Inglaterra para conocer de cerca el Big Ben y la cultura del Reino Unido.",
-    num: "04"
+    num: "04",
+    image: "/images/bigben.webp"
   },
   {
     title: "El Final Mágico",
     desc: "Tres noches en París combinando la elegancia de la Torre Eiffel con el día más esperado por los niños en el parque Disney.",
-    num: "05"
+    num: "05",
+    image: "/images/eiffel.webp"
   }
 ];
 ---
@@ -35,18 +40,25 @@ const itinerary = [
       <!-- Carousel Container -->
       <div id="itinerary-scroll" class="flex gap-6 overflow-x-auto pb-12 snap-x snap-mandatory scrollbar-hide no-scrollbar">
         {itinerary.map(item => (
-          <div class="min-w-[300px] md:min-w-[400px] bg-white p-8 md:p-12 rounded-[2.5rem] shadow-sm border border-gray-100 snap-center relative overflow-hidden">
-            <span class="absolute top-0 right-0 text-8xl font-black text-gray-50 -translate-y-4 translate-x-4">
-              {item.num}
-            </span>
-            <div class="relative z-10">
-              <div class="w-12 h-1 bg-amber-400 mb-8"></div>
-              <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-                {item.title}
-              </h3>
-              <p class="text-gray-600 text-lg leading-relaxed">
-                {item.desc}
-              </p>
+          <div class="min-w-[300px] md:min-w-[400px] bg-white rounded-[2.5rem] shadow-sm border border-gray-100 snap-center relative overflow-hidden group/card">
+            {item.image && (
+              <div class="h-48 overflow-hidden">
+                <img src={item.image} alt={item.title} class="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-110" />
+              </div>
+            )}
+            <div class="p-8 md:p-12 relative">
+              <span class="absolute top-0 right-0 text-8xl font-black text-gray-50 -translate-y-4 translate-x-4">
+                {item.num}
+              </span>
+              <div class="relative z-10">
+                <div class="w-12 h-1 bg-amber-400 mb-8"></div>
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+                  {item.title}
+                </h3>
+                <p class="text-gray-600 text-lg leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
             </div>
           </div>
         ))}
