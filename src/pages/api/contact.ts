@@ -17,31 +17,10 @@ export const POST: APIRoute = async ({ request }) => {
     const BREVO_API_KEY = import.meta.env.BREVO_API_KEY;
     const WEBHOOK_URL = import.meta.env.WEBHOOK_URL;
 
-    let contactResponse: Response | null = null;
     let emailResponse: Response | null = null;
 
     if (BREVO_API_KEY) {
-      // 1. Create/Update Contact in Brevo
-      contactResponse = await fetch('https://api.brevo.com/v3/contacts', {
-        method: 'POST',
-        headers: {
-          'accept': 'application/json',
-          'content-type': 'application/json',
-          'api-key': BREVO_API_KEY
-        },
-        body: JSON.stringify({
-          email: email,
-          attributes: {
-            NOMBRE: name,
-            TELEFONO: phone,
-            ORIGEN: 'Landing Europa con Disney 2026'
-          },
-          listIds: [1],
-          updateEnabled: true
-        })
-      });
-
-      // 2. Send Transactional Email Notification
+      // 1. Send Transactional Email Notification
       emailResponse = await fetch('https://api.brevo.com/v3/smtp/email', {
         method: 'POST',
         headers: {
@@ -98,7 +77,7 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const brevoSuccess = BREVO_API_KEY
-      ? ((contactResponse?.ok ?? false) || (emailResponse?.ok ?? false))
+      ? (emailResponse?.ok ?? false)
       : false;
 
     const webhookSuccess = webhookResponse?.ok ?? false;
