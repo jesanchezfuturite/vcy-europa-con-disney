@@ -15,7 +15,7 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const BREVO_API_KEY = import.meta.env.BREVO_API_KEY;
-    const WEBHOOK_URL = import.meta.env.WEBHOOK_URL;
+    const WEBHOOK_URL = import.meta.env.N8N_WEBHOOK_URL;
 
     let emailResponse: Response | null = null;
 
