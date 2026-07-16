@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
 
 interface Props {
 	title: string;
@@ -41,6 +42,7 @@ const { title } = Astro.props;
 	</head>
 	<body class="bg-white font-['Outfit',_sans-serif] scroll-smooth">
 		<slot />
+		<WhatsAppButton />
 	</body>
 </html>
 

@@ -1,0 +1,46 @@
+---
+const phone = "524771264952";
+const message = "Hola, quiero más información sobre el viaje Europa con Disney París.";
+const href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+---
+
+<a
+	href={href}
+	target="_blank"
+	rel="noopener noreferrer"
+	aria-label="Contactar por WhatsApp"
+	class="whatsapp-float"
+>
+	<svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+		<path d="M16.004 2.667c-7.363 0-13.333 5.97-13.333 13.333 0 2.353.615 4.646 1.782 6.667L2.667 29.333l6.84-1.793a13.27 13.27 0 0 0 6.497 1.66h.006c7.362 0 13.333-5.97 13.333-13.333S23.367 2.667 16.004 2.667Zm0 24.4h-.005a11.05 11.05 0 0 1-5.635-1.542l-.404-.24-4.06 1.064 1.084-3.958-.263-.407a11.033 11.033 0 0 1-1.7-5.884c0-6.104 4.968-11.07 11.088-11.07 2.962 0 5.747 1.154 7.84 3.25a11.024 11.024 0 0 1 3.246 7.827c-.003 6.104-4.97 11.07-11.09 11.07Zm6.08-8.29c-.334-.167-1.97-.972-2.276-1.083-.305-.112-.527-.167-.748.167-.221.334-.856 1.083-1.05 1.305-.194.223-.388.25-.72.084-.334-.167-1.409-.52-2.684-1.657-.992-.885-1.663-1.978-1.858-2.312-.194-.334-.02-.514.147-.68.15-.15.334-.39.5-.585.167-.195.222-.334.334-.557.111-.223.055-.418-.028-.585-.083-.167-.748-1.805-1.025-2.472-.27-.65-.545-.562-.748-.573l-.638-.011c-.222 0-.583.083-.888.417-.305.334-1.165 1.14-1.165 2.778 0 1.639 1.192 3.222 1.359 3.444.166.223 2.347 3.584 5.687 5.026.795.343 1.415.548 1.898.702.797.253 1.523.217 2.097.132.64-.096 1.97-.805 2.248-1.583.278-.777.278-1.444.194-1.583-.083-.14-.305-.223-.639-.39Z"/>
+	</svg>
+</a>
+
+<style>
+	.whatsapp-float {
+		position: fixed;
+		right: 1.25rem;
+		bottom: 1.25rem;
+		z-index: 50;
+		width: 56px;
+		height: 56px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 9999px;
+		background-color: #25D366;
+		color: #ffffff;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+	}
+
+	.whatsapp-float:hover {
+		transform: scale(1.08);
+		box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+	}
+
+	.whatsapp-float svg {
+		width: 30px;
+		height: 30px;
+	}
+</style>
